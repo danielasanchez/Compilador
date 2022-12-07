@@ -9,7 +9,7 @@ CONST edad=18
 VAR meses=edad*12
 VAR residuo=5%2
 
-IF edad>=18
+IF edad>18 || edad=18
  PRINT("Eres mayor de edad")
 ELSE
  PRINT("Eres menor de edad")
@@ -53,7 +53,8 @@ tokens = ['ID',
           'DOT',
           'UPDATE',
           'QUOTES',
-          'MOD'
+          'MOD',
+          'OR'
           ]
 
 tokens = tokens+reservadas
@@ -80,6 +81,7 @@ t_DOT = r'\.'
 t_UPDATE = r':='
 t_QUOTES = r'\"' 
 t_MOD = r'\%'
+t_OR= r'\|\|'
 
 def t_ID(t):
 	r'[a-zA-Z_][a-zA-Z0-9_]*'
@@ -89,6 +91,7 @@ def t_ID(t):
 		t.type = t.value
 
 	return t
+
 
 def t_newline(t):
 	r'\n+'
